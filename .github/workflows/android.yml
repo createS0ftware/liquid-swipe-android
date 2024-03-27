@@ -3,7 +3,7 @@ name: Build APK
 on:
   push:
     branches:
-      - main  # or your main branch name
+      - master  # or your main branch name
 
 jobs:
   build:
@@ -19,4 +19,4 @@ jobs:
         java-version: '11'
 
     - name: Build APK
-      run: ./gradlew assembleDebug  # Adjust this command as per your project setup
+      run: ./gradlew assembleRelease
