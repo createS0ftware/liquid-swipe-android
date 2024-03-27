@@ -20,13 +20,13 @@ jobs:
         distribution: 'temurin'
         architecture: x64
       
-    - name: Build debug artifact
-      run: ./gradle :android:assembleDebug
-  
-    - name: Upload APK
-      uses: actions/upload-artifact@v4
+     - name: Build APK
+      run: gradle assembleDebug  # Replace with your gradle command if necessary
+
+    - name: Upload APK as Artifact
+      uses: actions/upload-artifact@v2
       with:
-        name: sample-app.apk
+        name: app-debug
         path: app/build/outputs/apk/debug/*.apk
 
   release:
