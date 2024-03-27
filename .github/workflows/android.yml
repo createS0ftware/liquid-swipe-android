@@ -20,7 +20,7 @@ jobs:
         distribution: 'temurin'
         architecture: x64
       
-     - name: Build APK
+    - name: Build APK
       run: gradle assembleDebug  # Replace with your gradle command if necessary
 
     - name: Upload APK as Artifact
