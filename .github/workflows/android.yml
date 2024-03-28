@@ -23,7 +23,7 @@ jobs:
         gradle-version: '8.2'
         
     - name: Build Release APK
-      run: gradle assembleRelease
+      run: gradle assembleRelease --warning-mode all
 
     - name: Upload APK to Release
       uses: actions/upload-release-asset@v1
