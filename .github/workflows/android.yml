@@ -20,12 +20,20 @@ jobs:
         distribution: 'temurin'
         architecture: x64
 
-      
-    - name: Set up Gradle
-      uses: gradle/setup-gradle@v1
-      with:
-        gradle-version: '7.2'  # Specify the version of Gradle you want to use
+    - name: Download Gradle
+      run: |
+        wget https://services.gradle.org/distributions/gradle-7.2-bin.zip -P /tmp
+        sudo unzip -d /opt/gradle /tmp/gradle-*.zip
+      if: success()
 
+    - name: Set up Gradle Environment
+      run: |
+        echo "export GRADLE_HOME=/opt/gradle/gradle-7.2" >> $GITHUB_ENV
+        echo "export PATH=$GRADLE_HOME/bin:$PATH" >> $GITHUB_ENV
+      if: success()
+
+    - name: Verify Gradle installation
+      run: gradle --version
     - name: Build APK
       run: gradle assembleDebug  # Replace with your gradle command if necessary
 
