@@ -19,7 +19,13 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         architecture: x64
+
       
+    - name: Set up Gradle
+      uses: gradle/setup-gradle@v1
+      with:
+        gradle-version: '7.2'  # Specify the version of Gradle you want to use
+
     - name: Build APK
       run: gradle assembleDebug  # Replace with your gradle command if necessary
 
